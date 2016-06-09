@@ -1,1 +1,65 @@
-ng-message validation based on other input field in angularJs
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="net.sgoyal.example" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="net.sgoyal.example" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="net.sgoyal.example" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="net.sgoyal.example" class="no-js">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ng-message validation based on other input field in angularJs</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body ng-controller="AppCtrl">
+	<!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation"><a href="#">Get the code&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+					<li role="presentation"><a href="https://sgoyal.net">Back to blog</a></li>
+				</ul>
+			</nav>
+			<h3 class="text-muted">ng-message validation</h3>
+		</div>
+		<div class="container">
+
+			<form class="form-signin" name="userform" novalidate>
+				<label class="sr-only">Phone no</label>
+				<input type="text" class="form-control" name="phone" placeholder="Enter phone no" ng-model="form.phoneNo" autofocus>
+				
+				<label class="sr-only">Email id</label>
+				<input type="text" ng-required="!form.phoneNo" name="email" class="form-control" placeholder="Enter email id" ng-model="form.emailId">
+				<div ng-messages="userform.email.$error" role="alert" ng-show="userform.phone.$touched">
+						<div ng-message="required" class="msg-alert">email id is required if phone no is not given.</div>
+				</div>
+				<button ng-click="saveUser(userform)" class="btn btn-lg btn-primary btn-block" ng-disabled="!userform.$valid">Save</button>
+			</form>
+
+		</div>
+		<!-- /container -->
+		<footer class="footer">
+			<p>Design taken from <a href="http://getbootstrap.com/getting-started/#examples" target="_blank">Examples from Boorstrap</a></p>
+		</footer>
+
+	</div>
+	<!-- /container -->
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.5.6/angular-messages.min.js"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
