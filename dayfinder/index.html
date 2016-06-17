@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="dayFinder">
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="css/index.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="js/services.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body ng-controller="dayFinderCtrl">
+    <div class="container">
+        <div>
+            <h2>
+            <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Day Finder
+        </h2>
+        </div>
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Please select date</h2>
+
+            <div class="form-group">
+                <label for="date">Date</label>
+                <select id="date" class="form-control" ng-model="date.selectedDate" ng-change="onMonthYearChange()">
+                <option ng-repeat="n in range(1,dates)" ng-value="{{n}}">{{n}}</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="month">Month</label>
+                <select id="month" class="form-control" ng-model="date.selectedMonth" ng-change="onMonthYearChange()">
+                <option ng-value="{{month}}" ng-repeat="month in monthsName">{{month}}</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <select id="year" class="form-control" ng-model="date.selectedYear" ng-change="onMonthYearChange()">
+                <option ng-repeat="n in range(1900,2050)" ng-value="{{n}}">{{n}}</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="day">Day Found</label>
+                <label id="day" class="form-control">{{foundedDay}}</label>
+            </div>
+        </form>
+        <footer>
+            <b>*</b>&nbsp;&nbsp;Day calculation based on the techniques learnt from my friend's father that he learnt in his school around 35 years ago. Our Indian schools was that much rich in terms of knowledge transfer.
+            <br/><br/>
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="https://github.com/goyalshubham13/dayFinder" target="_blank">see the <i class="fa fa-github" aria-hidden="true"></i></a>
+                </div>
+                <div class="col-md-7">
+                    <i style="font-weight:bold;" class="fa fa-code" aria-hidden="true"></i> by <a href="https://twitter.com/goyalshubham13" target="_blank">@goyalshubham13</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
