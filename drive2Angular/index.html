@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <base href="/">
+    <title>Dive2Angular Courses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="libs/css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/app.component.css">
+
+    <!-- 1. Load libraries -->
+    <!-- IE required polyfills, in this exact order -->
+     <script src="libs/js/lib.min.js"></script>
+    <!-- 2. Configure SystemJS -->
+    <script>
+        System.config({
+        packages: {
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/main')
+            .then(null, console.error.bind(console));
+    </script>
+</head>
+
+<body>
+    <cr-app>Loading App...</cr-app>
+</body>
+
+</html>
