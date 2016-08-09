@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "./Course.service", "../../shared/widgets/stars/Star.component", "../../shared/pipes/CustomDate.pipe"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/router", "./course.service", "../../shared/widgets/stars/Star.component", "../../shared/pipes/CustomDate.pipe"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "angular2/router", "./Course.service", "../../
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, Course_service_1, Star_component_1, CustomDate_pipe_1;
+    var core_1, router_1, course_service_1, Star_component_1, CustomDate_pipe_1;
     var CourseDetailComponent;
     return {
         setters:[
@@ -20,8 +20,8 @@ System.register(["angular2/core", "angular2/router", "./Course.service", "../../
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (Course_service_1_1) {
-                Course_service_1 = Course_service_1_1;
+            function (course_service_1_1) {
+                course_service_1 = course_service_1_1;
             },
             function (Star_component_1_1) {
                 Star_component_1 = Star_component_1_1;
@@ -52,7 +52,7 @@ System.register(["angular2/core", "angular2/router", "./Course.service", "../../
                         directives: [Star_component_1.StarComponent],
                         pipes: [CustomDate_pipe_1.CustomDatePipe]
                     }), 
-                    __metadata('design:paramtypes', [router_1.RouteParams, Course_service_1.CourseService, router_1.Router])
+                    __metadata('design:paramtypes', [router_1.RouteParams, course_service_1.CourseService, router_1.Router])
                 ], CourseDetailComponent);
                 return CourseDetailComponent;
             }());
