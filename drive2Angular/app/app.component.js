@@ -51,9 +51,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                             router_1.ROUTER_PROVIDERS]
                     }),
                     router_1.RouteConfig([
-                        { path: '/home', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
-                        { path: '/courses', name: 'Courses', component: course_list_component_1.CourseListComponent },
-                        { path: '/course/:id', name: 'CourseDetail', component: course_detail_component_1.CourseDetailComponent }
+                        { path: 'home', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
+                        { path: 'courses', name: 'Courses', component: course_list_component_1.CourseListComponent },
+                        { path: 'course/:id', name: 'CourseDetail', component: course_detail_component_1.CourseDetailComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
