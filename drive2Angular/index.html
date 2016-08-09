@@ -12,7 +12,17 @@
 
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
-     <script src="libs/js/lib.min.js"></script>
+     <script src="libs/js/shims_for_IE.js"></script>
+    <script src="libs/js/es6-shim.min.js"></script>
+    <script src="libs/js/system-polyfills.js"></script>
+    <script src="libs/js/angular2-polyfills.js"></script>
+    <script src="libs/js/system.src.js"></script>
+    <script src="libs/js/Rx.js"></script>
+    <script src="libs/js/angular2.dev.js"></script>
+    <!-- Required for http -->
+    <script src="libs/js/http.dev.js"></script>
+    <!-- Required for routing -->
+    <script src="libs/js/router.dev.js"></script>
     <!-- 2. Configure SystemJS -->
     <script>
         System.config({
