@@ -42,6 +42,7 @@
 				</div>
 				<label>Resume</label>
 				<input multiple formats="jpg,txt" type="file" ng-change="submitted=false" ng-model="form.resume" required name="resume" class="form-control" placeholder="Select Resume">
+				<p class="help-block">Supported file formats are jpg,txt</p>
 				<div ng-messages="userform.resume.$error" role="alert" ng-show="userform.resume.$error && submitted">
 						<div ng-message="required" class="msg-alert">resume is required</div>
 						<div ng-message="validFormat" class="msg-alert">Unsupported file type</div>
