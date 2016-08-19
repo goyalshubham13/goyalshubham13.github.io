@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Spa-hero by sgoyalnet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Spa-hero</h1>
+      <h2 class="project-tagline">Create production/dev ready distribution build for javascript based single page applications.</h2>
+      <a href="https://github.com/sgoyalnet/spa-hero" class="btn">View on GitHub</a>
+      <a href="https://github.com/sgoyalnet/spa-hero/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sgoyalnet/spa-hero/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="spa-hero" class="anchor" href="#spa-hero" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>spa-hero</h1>
+
+<p>Create production/dev ready distribution build for javascript based single page applications. spa-hero uses gulp-useref to read out the html file and copy third party dependencies to a separate library folder.</p>
+
+<h3>
+<a id="why-i-wrote-this" class="anchor" href="#why-i-wrote-this" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why I wrote this?</h3>
+
+<p>In this modern era of web, we extensivly use npm or bower to download dependencies to our project. These dependencies are right there in our project folder including lots of other files that came in with these packages. After looking at the size of my project one unavoidable question comes to us ,how to upload my project on server?
+Do I have to pick each and every javascript/css files from node_modules/bower_component folder and maintain a new folder which can be uploaded to server? If yes, then what happen when I added or removed some dependencies and I have to repeat the same cycle? Awww.</p>
+
+<p>So to overcome this problem I wrote a gulp task which automated this process for me. So I thought about converting this to a command line utility which can take 2-3 parameters and do the job for us. We dont even need to write any gulp task file. Its all being written by this utility.</p>
+
+<h3>
+<a id="version" class="anchor" href="#version" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Version</h3>
+
+<p>1.0.0</p>
+
+<h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<p>spa depends on some very cool nodejs modules available which help spa to generate build files.</p>
+
+<p>Major modules are as follows:</p>
+
+<ul>
+<li>gulp</li>
+<li>gulp-useref</li>
+</ul>
+
+<h3>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Support files minification for prod and left file untouched for dev.</li>
+<li>maintain a separate directory for our distribution.</li>
+<li>Can choose source and destination folders.</li>
+</ul>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
+
+<div class="highlight highlight-source-shell"><pre>npm install spa-hero</pre></div>
+
+<h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h3>
+
+<p><strong>Commands</strong>:</p>
+
+<ul>
+<li>build-dev (we choose this command when we dont want spa to concat and minify our files.)</li>
+<li>build-prod (for production use)</li>
+</ul>
+
+<p><strong>Parameters</strong></p>
+
+<ul>
+<li>-h or --html (relative path for the directory of your index.html file)</li>
+<li>-a or --app (relative path for the directory of your JS/CSS code)</li>
+<li>-d or --dest (relative path for the directory of your distribution folder)</li>
+</ul>
+
+<p>try</p>
+
+<div class="highlight highlight-source-shell"><pre>spa --help</pre></div>
+
+<h3>
+<a id="usages" class="anchor" href="#usages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usages</h3>
+
+<p><strong>Step 1.</strong> Open your index.html file.</p>
+
+<p><strong>Step 2.</strong> Modify your html with blocks as shown below</p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-c">&lt;!-- build:&lt;type&gt;(alternate search path) &lt;path&gt; &lt;parameters&gt; --&gt;</span>
+... HTML Markup, list of script / link tags.
+<span class="pl-c">&lt;!-- endbuild --&gt;</span></pre></div>
+
+<ul>
+<li>
+<strong>type</strong> either js, css or remove; remove will remove the build block entirely without generating a file</li>
+<li>
+<strong>alternate search path</strong> (optional) By default the input files are relative to the treated file. Alternate search path allows one to change that</li>
+<li>
+<strong>path</strong> the file path of the optimized file, the target output</li>
+<li>
+<strong>parameters</strong> extra parameters that should be added to the tag</li>
+</ul>
+
+<p>An example of this in completed form can be seen below:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">html</span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+    <span class="pl-c">&lt;!-- build:css libs/css/combined.css --&gt;</span>
+    &lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>css/one.css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>css/two.css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span>&gt;
+    <span class="pl-c">&lt;!-- endbuild --&gt;</span>
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
+    <span class="pl-c">&lt;!-- build:js libs/js/angular.min.js--&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../node_modules/angular/angular.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+  <span class="pl-c">&lt;!-- endbuild --&gt;</span>
+  <span class="pl-c">&lt;!-- build:js libs/js/angular-route.min.js--&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../node_modules/angular-route/angular-route.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+  <span class="pl-c">&lt;!-- endbuild --&gt;</span>
+
+  <span class="pl-c">&lt;!-- for production, you can combine above third party files by putting all of them in single block --&gt;</span>
+
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>app.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>view1/view1.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>view2/view2.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>components/version/version.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>components/version/version-directive.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>components/version/interpolate-filter.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<p>The resulting HTML would be:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">html</span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+    &lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>libs/css/combined.css<span class="pl-pds">"</span></span>/&gt;
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>libs/js/angular.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>libs/js/angular-route.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>app.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>view1/view1.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>view2/view2.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>components/version/version.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>components/version/version-directive.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>components/version/interpolate-filter.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<p>See <a href="https://www.npmjs.com/package/gulp-useref">gulp-useref</a> for more information.</p>
+
+<p><strong>Step 3:</strong> Open command prompt or terminal and go to the directry of your project and run</p>
+
+<div class="highlight highlight-source-shell"><pre>spa build-dev -h app -a app -d dist</pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-source-shell"><pre>spa build-prod -h app -a app -d dist</pre></div>
+
+<h3>
+<a id="command-demo" class="anchor" href="#command-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Command Demo</h3>
+
+<p><img src="https://bytebucket.org/sgoyalnet/assets/raw/f407afc4c025a4f2a93952489a8835704e10ae35/spa-hero-demo1.png" alt="alt text" title="Demo folder structure"></p>
+
+<h3>
+<a id="sample-project-structure" class="anchor" href="#sample-project-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample project structure.</h3>
+
+<p><img src="https://bytebucket.org/sgoyalnet/assets/raw/0829c8d63cb758e97567961994b2dbaa051c76cb/spa-hero-demo.png" alt="alt text" title="Demo folder structure"></p>
+
+<h3>
+<a id="and-this-is-what-we-got-after-spa-hero-take-charge" class="anchor" href="#and-this-is-what-we-got-after-spa-hero-take-charge" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>And this is what we got after spa-hero take charge:</h3>
+
+<p><img src="https://bytebucket.org/sgoyalnet/assets/raw/f407afc4c025a4f2a93952489a8835704e10ae35/spa-hero-demo2.png" alt="alt text" title="Demo folder structure"></p>
+
+<p>You will see a new directry called <strong><em>dist</em></strong> with all of your files which are server ready. Enjoy!!</p>
+
+<h3>
+<a id="contribute" class="anchor" href="#contribute" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contribute</h3>
+
+<p>Do you want to improve it? Sounds cool. Please drop me a line at <a href="mailto:mail.goyalshubham@gmail.com">mail.goyalshubham@gmail.com</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sgoyalnet/spa-hero">Spa-hero</a> is maintained by <a href="https://github.com/sgoyalnet">sgoyalnet</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
